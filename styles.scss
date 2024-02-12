@@ -1,0 +1,135 @@
+// Definindo as variáveis
+$primary-color: #182C61;
+$secondary-color: #44bd32;
+$secondary-color-hover: #4cd137;
+$background-color: #f5f6fa;
+$product-border-radius: 16px;
+$product-button-border-radius: 8px;
+
+// Definindo o mixin para border-radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// Definindo estilos para o documento
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+// Estilizando o corpo do documento
+body {
+  background-color: $background-color;
+}
+
+// Estilizando elementos de lista
+li {
+  list-style: none;
+}
+
+// Estilizando o container principal
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+// Estilizando o cabeçalho
+header {
+  background-color: $primary-color;
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  // Estilizando o container do cabeçalho
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+  }
+}
+
+// Estilizando o menu de navegação
+.menu {
+  display: flex;
+
+  // Estilizando os itens do menu
+  li {
+    font-weight: bold;
+    margin-left: 24px;
+
+    // Estilizando os links do menu
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
+// Estilizando as seções
+section {
+  padding: 56px 0;
+}
+
+// Estilizando a seção de produtos
+.products {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 32.66%);
+  column-gap: 1%;
+  row-gap: 4%;
+  width: 100%;
+
+  // Estilizando os itens de produto
+  .product-item {
+    img {
+      width: 100%;
+      @include border-radius($product-border-radius);
+    }
+  }
+}
+
+// Estilizando o botão de produto
+.product-button {
+  display: block;
+  background-color: $secondary-color;
+  color: #fff;
+  text-align: center;
+  padding: 8px 0;
+  @include border-radius($product-button-border-radius);
+  margin-top: 8px;
+  text-decoration: none;
+
+  // Estilizando o hover do botão de produto
+  &:hover {
+    background-color: $secondary-color-hover;
+  }
+}
+
+// Estilizando para telas menores que 1023px
+@media screen and (max-width: 1023px) {
+  .container {
+    max-width: 80%;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 48.5%);
+    column-gap: 3%;
+  }
+}
+
+// Estilizando para telas menores que 767px
+@media screen and (max-width: 767px) {
+  .products {
+    display: block;
+
+    .product-item {
+      margin-bottom: 32px;
+    }
+  }
+}
